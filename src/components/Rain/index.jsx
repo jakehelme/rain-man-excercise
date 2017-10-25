@@ -1,26 +1,38 @@
-import React, {Component} from 'react';
-import {windowHeight, rainWidth, rainHeight} from './../../constants';
+import React, { Component } from 'react';
+import { windowHeight, rainWidth, rainHeight, manWidth, manHeight } from './../../constants';
 import './Rain.css';
 
 class Rain extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			yPos: windowHeight
-		}
+			x: props.x,
+			y: windowHeight
+		};
 
 		setTimeout(() => {
 			setInterval(() => {
+				if (this.hasCollided()) {
+					this.props.gameOver();
+				}
+
 				this.setState({
-					yPos: this.state.yPos < 0 + rainHeight ? windowHeight : this.state.yPos - 5
+					y: this.state.y < 0 + rainHeight ? windowHeight : this.state.y - 5
 				});
 			}, 50);
 		}, this.props.delay);
 	}
 
+	hasCollided() {
+		return this.state.x < this.props.man.x + manWidth &&
+			this.state.x + rainWidth > this.props.man.x &&
+			this.state.y < this.props.man.y + manHeight &&
+			rainHeight + this.state.y > this.props.man.y;
+	}
+
 	render() {
 		return (
-			<div class='raindrop' style={{bottom: `${this.state.yPos}px`, height: `${rainHeight}px`, width: `${rainWidth}px`, left: `${this.props.x}px`}}/>
+			<div className='raindrop' style={{ bottom: `${this.state.y}px`, height: `${rainHeight}px`, width: `${rainWidth}px`, left: `${this.state.x}px` }} />
 		);
 	}
 }

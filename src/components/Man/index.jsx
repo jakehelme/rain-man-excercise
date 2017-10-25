@@ -15,20 +15,22 @@ class Man extends Component {
 
 		document.addEventListener('keydown', (event) => {
 			if(event.keyCode === 37) {
-				this.setState({
-					position: clamp(this.state.position - moveDistance, 0, windowWidth - manWidth)
-				});
+				// this.setState({
+				// 	position: clamp(this.state.position - moveDistance, 0, windowWidth - manWidth)
+				// });
+				this.props.onMove(clamp(this.props.position.x - moveDistance, 0, windowWidth - manWidth));
 			} else if (event.keyCode === 39) {
-				this.setState({
-					position: clamp(this.state.position + moveDistance, 0, windowWidth - manWidth)
-				});
+				// this.setState({
+				// 	position: clamp(this.state.position + moveDistance, 0, windowWidth - manWidth)
+				// });
+				this.props.onMove(clamp(this.props.position.x + moveDistance, 0, windowWidth - manWidth));
 			}
 		});
 	}
 
 	render() {
 		const style = {
-			left: `${this.state.position}px`,
+			left: `${this.props.position.x}px`,
 			width: `${manWidth}px`,
 			height: `${manHeight}px`,
 		};
