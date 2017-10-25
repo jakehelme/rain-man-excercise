@@ -21,7 +21,7 @@ class Rain extends Component {
 				}
 
 				this.setState({
-					y: this.state.y < 0 + rainHeight ? windowHeight : this.state.y - 5
+					y: this.state.y < 0 + rainHeight ? windowHeight - rainHeight : this.state.y - 5
 				});
 			}, 50);
 		}, this.props.delay);
