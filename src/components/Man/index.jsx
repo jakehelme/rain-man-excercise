@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {windowWidth, manWidth, manHeight} from './../../constants';
+import clamp from './../../util/clamp';
 import './Man.css';
 
 class Man extends Component {
@@ -15,11 +16,11 @@ class Man extends Component {
 		document.addEventListener('keydown', (event) => {
 			if(event.keyCode === 37) {
 				this.setState({
-					position: this.state.position - moveDistance
+					position: clamp(this.state.position - moveDistance, 0, windowWidth - manWidth)
 				});
 			} else if (event.keyCode === 39) {
 				this.setState({
-					position: this.state.position + moveDistance
+					position: clamp(this.state.position + moveDistance, 0, windowWidth - manWidth)
 				});
 			}
 		});

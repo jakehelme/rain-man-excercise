@@ -1,4 +1,5 @@
 #game {
   background-color: lightblue;
-  position: relative;
+	position: relative;
+	margin: 1em;
 }
