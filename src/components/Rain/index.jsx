@@ -7,10 +7,14 @@ class Rain extends Component {
 		super(props);
 		this.state = {
 			x: props.x,
-			y: windowHeight
+			y: windowHeight - rainHeight,
+			visible: false
 		};
 
 		setTimeout(() => {
+			this.setState({
+				visible: true
+			});
 			setInterval(() => {
 				if (this.hasCollided()) {
 					this.props.gameOver();
@@ -31,8 +35,16 @@ class Rain extends Component {
 	}
 
 	render() {
+		const style = { 
+			bottom: `${this.state.y}px`, 
+			height: `${rainHeight}px`, 
+			width: `${rainWidth}px`, 
+			left: `${this.state.x}px`,
+			visibility: this.state.visible ? 'visible' : 'hidden'
+		};
+
 		return (
-			<div className='raindrop' style={{ bottom: `${this.state.y}px`, height: `${rainHeight}px`, width: `${rainWidth}px`, left: `${this.state.x}px` }} />
+			<div className='raindrop' style={style} />
 		);
 	}
 }
