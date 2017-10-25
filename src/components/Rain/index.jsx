@@ -9,11 +9,13 @@ class Rain extends Component {
 			yPos: windowHeight
 		}
 
-		setInterval(() => {
-			this.setState({
-				yPos: this.state.yPos - 5
-			});
-		}, 50);
+		setTimeout(() => {
+			setInterval(() => {
+				this.setState({
+					yPos: this.state.yPos < 0 + rainHeight ? windowHeight : this.state.yPos - 5
+				});
+			}, 50);
+		}, this.props.delay);
 	}
 
 	render() {
