@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {windowHeight, manWidth, manHeight} from './../../constants';
+import {windowHeight, rainWidth, rainHeight} from './../../constants';
 import './Rain.css';
 
 class Rain extends Component {
@@ -18,7 +18,7 @@ class Rain extends Component {
 
 	render() {
 		return (
-			<div class='raindrop' style={{bottom: `${this.state.yPos}px`, height: `${manHeight}px`, width: `${manWidth}px`, left: `${this.props.x}px`}}/>
+			<div class='raindrop' style={{bottom: `${this.state.yPos}px`, height: `${rainHeight}px`, width: `${rainWidth}px`, left: `${this.props.x}px`}}/>
 		);
 	}
 }
