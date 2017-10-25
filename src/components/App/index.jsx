@@ -58,10 +58,14 @@ class App extends Component {
 			</div>
 		);
 
+		const gameOver = (
+			<h1>YOU DEAD FOO</h1>
+		);
+
 		return (
 			<div id='game' style={{height: `${windowHeight}px`, width: `${windowWidth}px`}}>
 				{
-					this.state.gameOver ? null : game
+					this.state.gameOver ? gameOver : game
 				}
 				
 			</div>
